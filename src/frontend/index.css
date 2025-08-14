@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* rgb values for tailwind opacity */
+    --color-primary: 59 130 246;
+    --color-secondary: 99 102 241;
+    --color-accent: 217 70 239;
+  }
+  
+  body {
+    @apply antialiased bg-gray-50 text-gray-900 transition-colors duration-300;
+  }
+  
+  body.dark {
+    @apply bg-gray-900 text-gray-100;
+  }
+}
+
+@layer components {
+  /* button base class */
+  .btn {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed
+           transform active:scale-[0.98];
+  }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed
+           transform active:scale-[0.98] bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500
+           shadow-sm hover:shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed
+           transform active:scale-[0.98] bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 
+           focus:ring-gray-500 shadow-sm hover:shadow;
+  }
+  
+  .btn-danger {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed
+           transform active:scale-[0.98] bg-red-600 text-white hover:bg-red-700 focus:ring-red-500
+           shadow-sm hover:shadow-md;
+  }
+  
+  /* button sizes */
+  .btn-sm {
+    @apply text-sm px-3 py-1.5;
+  }
+  
+  .btn-md {
+    @apply text-sm px-4 py-2;
+  }
+  
+  .btn-lg {
+    @apply text-base px-6 py-3;
+  }
+
+  /* form inputs */
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg 
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           placeholder-gray-400 transition-all duration-200
+           hover:border-gray-400;
+  }
+  
+  .input-error {
+    @apply border-red-300 focus:ring-red-500;
+  }
+  
+  .input-label {
+    @apply block text-sm font-medium text-gray-700 mb-1.5;
+  }
+  
+  .input-helper {
+    @apply text-sm text-gray-500 mt-1.5;
+  }
+  
+  .input-error-message {
+    @apply text-sm text-red-600 mt-1.5 flex items-center gap-1;
+  }
+
+  /* card styles */
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 
+           hover:shadow-soft transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 
+           hover:-translate-y-0.5 hover:shadow-lg cursor-pointer
+           transition-all duration-200 overflow-visible;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  .card-header {
+    @apply px-6 py-4 border-b border-gray-100;
+  }
+  
+  .card-footer {
+    @apply px-6 py-4 border-t border-gray-100 bg-gray-50 rounded-b-xl;
+  }
+
+  /* loading animation */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
+  }
+}
+
+@layer utilities {
+}
+
+/* quill editor styles */
+.ql-container {
+  @apply text-base border-gray-200 rounded-b-lg;
+}
+
+.ql-editor {
+  @apply min-h-[500px] p-6 focus:outline-none;
+}
+
+.ql-editor.ql-blank::before {
+  @apply text-gray-400 italic;
+}
+
+.ql-toolbar.ql-snow {
+  @apply border-gray-200 bg-gray-50/50 rounded-t-lg sticky top-0 z-10;
+}
+
+.ql-toolbar .ql-stroke {
+  @apply stroke-gray-600;
+}
+
+.ql-toolbar .ql-fill {
+  @apply fill-gray-600;
+}
+
+.ql-toolbar button:hover .ql-stroke {
+  @apply stroke-primary-600;
+}
+
+.ql-toolbar button:hover .ql-fill {
+  @apply fill-primary-600;
+}
+
+.ql-toolbar button.ql-active .ql-stroke {
+  @apply stroke-primary-600;
+}
+
+.ql-toolbar button.ql-active .ql-fill {
+  @apply fill-primary-600;
+}
+
+/* custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded hover:bg-gray-500;
+}
+
+/* reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* dark mode styles */
+.dark {
+  .card {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .input-field {
+    @apply bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400
+           hover:border-gray-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-800 text-gray-100 border-gray-600 hover:bg-gray-700;
+  }
+  
+  .ql-toolbar.ql-snow {
+    @apply bg-gray-800/50 border-gray-700;
+  }
+  
+  .ql-container {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .ql-editor {
+    @apply text-gray-100;
+  }
+  
+  .ql-toolbar .ql-stroke {
+    @apply stroke-gray-300;
+  }
+  
+  .ql-toolbar .ql-fill {
+    @apply fill-gray-300;
+  }
+}
+
+/* print styles */
+@media print {
+  .no-print {
+    @apply hidden;
+  }
+  
+  body {
+    @apply bg-white;
+  }
+  
+  .ql-toolbar {
+    @apply hidden;
+  }
+}

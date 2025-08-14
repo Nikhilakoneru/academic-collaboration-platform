@@ -1,0 +1,43 @@
+# Run tests on push and PRs
+name: Test API
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup
+        run: |
+          cd testing
+          chmod +x *.sh
+      
+      - name: Test login
+        run: |
+          cd testing
+          ./login.sh
+          if [ $? -ne 0 ]; then
+            echo "Login failed"
+            exit 1
+          fi
+      
+      - name: Test CRUD
+        run: |
+          cd testing
+          ./crud.sh
+          if [ $? -ne 0 ]; then
+            echo "CRUD test failed"
+            exit 1
+          fi
+      
+      - name: Build frontend
+        run: |
+          npm install
+          npm run build
