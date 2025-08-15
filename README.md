@@ -10,6 +10,8 @@ This platform allows multiple users to collaborate on documents in real-time. It
 
 Academic collaboration often requires multiple authors to work on the same document. Traditional methods like emailing document versions back and forth lead to version control issues and merge conflicts. This platform provides a centralized solution where all collaborators can work on the same document simultaneously.
 
+I apologise for not using python because when I was learning about terraform and was following the tutorials they all used HCL, so that's where I forgot to use python. By the time I realized we were supposed to use Python, I was already deep into HCL with half my infrastructure done. I made the call to stick with it rather than restart. HCL ended up being pretty easy too and it was like JSON.
+
 ## Features
 
 - **User Authentication**: Email/password based signup and login
